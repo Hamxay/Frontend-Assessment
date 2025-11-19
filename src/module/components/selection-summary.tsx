@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useMemo } from "react";
-import type { Section, ISeat, ISelectionSummaryProps } from "@/utilis/types";
-import { TIER_PRICES } from "@/utilis/constants";
+import { useMemo } from 'react';
+import type { Section, ISeat, ISelectionSummaryProps } from '@/utilis/types';
+import { TIER_PRICES } from '@/utilis/constants';
 
 const SelectionSummary = ({
   selectedSeats,
@@ -25,13 +25,11 @@ const SelectionSummary = ({
       return sum + price;
     }, 0);
 
-    const tax = subtotal * 0.1;
-    const total = subtotal + tax;
+    const total = subtotal;
 
     return {
       seats,
       subtotal,
-      tax,
       total,
     };
   }, [selectedSeats, allSeats]);
@@ -60,17 +58,7 @@ const SelectionSummary = ({
 
       {summary.seats.length > 0 && (
         <div className="space-y-2 mb-4">
-          <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Subtotal</span>
-            <span className="text-foreground">
-              ${summary.subtotal.toFixed(2)}
-            </span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Tax (10%)</span>
-            <span className="text-foreground">${summary.tax.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between font-semibold border-t border-border pt-2">
+          <div className="flex justify-between font-semibold  pt-2">
             <span className="text-foreground">Total</span>
             <span className="text-foreground">${summary.total.toFixed(2)}</span>
           </div>

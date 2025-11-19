@@ -31,7 +31,8 @@ const SeatingMap = ({
         e.key === "ArrowDown"
       ) {
         e.preventDefault();
-        const currentIndex = allSeats.findIndex((s) => s.id === focusedSeatId);
+        // Derive current index from the keydown target seat to avoid relying on internal focus state
+        const currentIndex = allSeats.findIndex((s) => s.id === seat.id);
         let nextIndex = currentIndex;
 
         if (e.key === "ArrowRight") nextIndex = currentIndex + 1;
@@ -48,7 +49,7 @@ const SeatingMap = ({
         }
       }
     },
-    [focusedSeatId, allSeats, onSeatClick, onSeatFocus]
+    [allSeats, onSeatClick, onSeatFocus]
   );
 
   const handleSeatClick = (seat: ISeat) => {
