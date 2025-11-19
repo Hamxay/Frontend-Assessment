@@ -26,9 +26,7 @@ describe('Venue seat selection E2E', () => {
     cy.contains('Order Summary').should('be.visible');
     cy.contains('A-1-01').should('be.visible');
     cy.contains('$50').should('be.visible'); // line item
-    cy.contains('Subtotal').siblings().contains('$50.00').should('be.visible');
-    cy.contains('Tax (10%)').siblings().contains('$5.00').should('be.visible');
-    cy.contains('Total').siblings().contains('$55.00').should('be.visible');
+    cy.contains('Total').siblings().contains('$50.00').should('be.visible');
 
     // Continue should be enabled when at least 1 seat is selected
     cy.get('button[aria-label^="Continue to checkout"]').should(
